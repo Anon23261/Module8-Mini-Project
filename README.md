@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Deployment Status](https://img.shields.io/github/deployments/Anon23261/portfolio/github-pages?label=GitHub%20Pages&logo=github&style=for-the-badge)](https://anon23261.github.io/portfolio/)
-[![Last Commit](https://img.shields.io/github/last-commit/Anon23261/portfolio?style=for-the-badge&logo=git&color=blue)](https://github.com/Anon23261/portfolio/commits/master)
+[![Last Commit](https://img.shields.io/github/last-commit/Anon23261/portfolio?style=for-the-badge&logo=git&color=blue)](https://github.com/Anon23261/portfolio/commits/main)
 [![License](https://img.shields.io/github/license/Anon23261/portfolio?style=for-the-badge&logo=opensourceinitiative&color=green)](LICENSE)
 [![Code Size](https://img.shields.io/github/languages/code-size/Anon23261/portfolio?style=for-the-badge&logo=github&color=orange)](https://github.com/Anon23261/portfolio)
 
