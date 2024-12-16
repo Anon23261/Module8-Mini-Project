@@ -2,10 +2,10 @@
 
 <div align="center">
 
-[![Deployment Status](https://img.shields.io/github/deployments/Anon23261/portfolio/github-pages?label=GitHub%20Pages&logo=github&style=for-the-badge)](https://anon23261.github.io/portfolio/)
-[![Last Commit](https://img.shields.io/github/last-commit/Anon23261/portfolio?style=for-the-badge&logo=git&color=blue)](https://github.com/Anon23261/portfolio/commits/main)
-[![License](https://img.shields.io/github/license/Anon23261/portfolio?style=for-the-badge&logo=opensourceinitiative&color=green)](LICENSE)
-[![Code Size](https://img.shields.io/github/languages/code-size/Anon23261/portfolio?style=for-the-badge&logo=github&color=orange)](https://github.com/Anon23261/portfolio)
+[![Deployment Status](https://img.shields.io/github/deployments/Anon23261/Module8-Mini-Project/github-pages?label=GitHub%20Pages&logo=github&style=for-the-badge)](https://anon23261.github.io/Module8-Mini-Project/)
+[![Last Commit](https://img.shields.io/github/last-commit/Anon23261/Module8-Mini-Project?style=for-the-badge&logo=git&color=blue)](https://github.com/Anon23261/Module8-Mini-Project/commits/main)
+[![License](https://img.shields.io/github/license/Anon23261/Module8-Mini-Project?style=for-the-badge&logo=opensourceinitiative&color=green)](LICENSE)
+[![Code Size](https://img.shields.io/github/languages/code-size/Anon23261/Module8-Mini-Project?style=for-the-badge&logo=github&color=orange)](https://github.com/Anon23261/Module8-Mini-Project)
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -14,7 +14,7 @@
 
 <img src="https://i.imgur.com/your-screenshot.png" alt="Portfolio Preview" width="600px"/>
 
-### 🔐 [View Live Demo](https://anon23261.github.io/portfolio/) | 🛡️ [Explore Code](https://github.com/Anon23261/portfolio)
+### 🔐 [View Live Demo](https://anon23261.github.io/Module8-Mini-Project/) | 🛡️ [Explore Code](https://github.com/Anon23261/Module8-Mini-Project)
 
 </div>
 
@@ -58,7 +58,7 @@
 
 ### 🏗️ Project Structure
 \`\`\`
-portfolio/
+Module8-Mini-Project/
 ├── index.html              # Main entry point
 ├── assets/
 │   ├── css/
@@ -79,16 +79,16 @@ portfolio/
 ### Quick Start
 1. **Visit Live Site**
    ```bash
-   https://anon23261.github.io/portfolio/
+   https://anon23261.github.io/Module8-Mini-Project/
    ```
 
 2. **Local Development**
    ```bash
    # Clone repository
-   git clone https://github.com/Anon23261/portfolio.git
+   git clone https://github.com/Anon23261/Module8-Mini-Project.git
    
    # Navigate to project
-   cd portfolio
+   cd Module8-Mini-Project
    
    # Start local server (Python 3)
    python -m http.server 8000
@@ -190,7 +190,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Ghost | Cybersecurity Professional & Full Stack Developer
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://anon23261.github.io/portfolio/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://anon23261.github.io/Module8-Mini-Project/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Anon23261)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourprofile)
 
@@ -209,4 +209,4 @@ If you find this project helpful, please consider:
 
 Made with 🖤 by Ghost
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FAnon23261%2Fportfolio&label=Visitors&labelColor=%23000000&countColor=%2364ffda)</div>
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FAnon23261%2FModule8-Mini-Project&label=Visitors&labelColor=%23000000&countColor=%2364ffda)</div>
