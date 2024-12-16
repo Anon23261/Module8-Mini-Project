@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost - Cybersecurity Professional & Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="matrix-rain" class="matrix-bg"></canvas>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <a href="#">GhostSec</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="terminal-box">
+                <h1>Hello, World! I'm Ghost</h1>
+                <p>Cybersecurity Professional | Full Stack Developer</p>
+                <p class="typing-text">Securing the digital frontier, one line of code at a time.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View My Work</a>
+                <a href="#contact" class="btn secondary">Initialize Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>> About_Me</h2>
+        <div class="about-content terminal-box">
+            <p>Passionate kernel developer and systems programmer with a strong foundation in low-level computing. Currently expanding my expertise through full-stack development education to bridge the gap between system architecture and modern web technologies.</p>
+            <p>Specializing in:</p>
+            <ul>
+                <li>Operating System Development</li>
+                <li>Kernel Programming</li>
+                <li>Systems Architecture</li>
+                <li>Low-level Programming (C/C++)</li>
+                <li>Full-stack Web Development</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>> Featured_Projects</h2>
+        <div class="section-content">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Projects</button>
+                <button class="filter-btn" data-category="systems">Systems</button>
+                <button class="filter-btn" data-category="security">Security</button>
+                <button class="filter-btn" data-category="fullstack">Full Stack</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Projects will be dynamically populated here -->
+                <div class="project-info">
+                    <p class="note">Click "View Demo" to see similar live projects in action!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>> Technical_Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-category terminal-box">
+                <h3>Security Skills</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span>Penetration Testing</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Network Security</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Security Auditing</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category terminal-box">
+                <h3>Development Skills</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span>Secure Coding</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Full Stack Development</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span>API Security</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>> Contact_Me</h2>
+        <div class="contact-content">
+            <form id="contact-form" action="mailto:ghostsector@icloud.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">> Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">> Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">> Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn primary">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> ghostsector@icloud.com</p>
+                <p class="note">* I'll get back to you as soon as possible!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Ghost Sec | Secured by Design</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
