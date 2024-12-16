@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://anon23261.github.io/Module8-Mini-Project/sitemap.xml

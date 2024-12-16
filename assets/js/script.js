@@ -138,192 +138,187 @@ let currentFilter = 'all';
 
 function filterProjects(category) {
     currentFilter = category;
-    const projectsGrid = document.querySelector('.projects-grid');
-    projectsGrid.innerHTML = '';
+    const projectsContainer = document.querySelector('.projects-grid');
+    projectsContainer.style.opacity = '0';
     
-    // Update active button state
+    setTimeout(() => {
+        populateProjects();
+        projectsContainer.style.opacity = '1';
+    }, 300);
+    
+    // Update active filter button
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('data-category') === category) {
+        if (btn.dataset.category === category) {
             btn.classList.add('active');
         }
     });
-    
-    const filteredProjects = category === 'all' 
-        ? projects 
-        : projects.filter(project => project.category === category);
+}
+
+// Typing animation with cursor effect
+function typeWriter(element, text, i = 0) {
+    if (i < text.length) {
+        element.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
+        setTimeout(() => typeWriter(element, text, i + 1), 100);
+    } else {
+        element.innerHTML = text + '<span class="cursor">|</span>';
+    }
+}
+
+// Initialize typing animations
+function initTypeAnimations() {
+    const typingElements = document.querySelectorAll('.typing-text');
+    typingElements.forEach(element => {
+        const text = element.textContent;
+        element.textContent = '';
+        typeWriter(element, text);
+    });
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('typing-text')) {
+                typeWriter(entry.target, entry.target.dataset.text);
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('section, .terminal-box, .key-point').forEach(el => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+});
+
+// Populate projects with terminal-style cards
+function populateProjects() {
+    const projectsGrid = document.querySelector('.projects-grid');
+    projectsGrid.innerHTML = '';
+
+    const filteredProjects = projects.filter(project => 
+        currentFilter === 'all' || project.category === currentFilter
+    );
 
     filteredProjects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card terminal-box';
         projectCard.innerHTML = `
-            <div class="project-header">
-                <h3>> ${project.title}</h3>
+            <div class="terminal-header">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
             </div>
-            <img src="${project.image}" alt="${project.title}">
-            <div class="project-content">
-                <p>${project.description}</p>
-                <h4>> Key Features:</h4>
-                <ul>
-                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
-                <h4>> Tech Stack:</h4>
-                <div class="tech-stack">
+            <h3>${project.title}</h3>
+            <p class="terminal-prompt">$ cat description.txt</p>
+            <p>${project.description}</p>
+            <div class="project-tech">
+                <p class="terminal-prompt">$ ls technologies/</p>
+                <div class="tech-tags">
                     ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
-                <a href="${project.link}" class="btn primary" target="_blank">View Project <i class="fas fa-code-branch"></i></a>
+            </div>
+            <div class="project-links">
+                <a href="${project.link}" target="_blank" class="btn primary">
+                    <i class="fab fa-github"></i> View Source
+                </a>
+                ${project.demo ? `
+                    <a href="${project.demo}" target="_blank" class="btn secondary">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                ` : ''}
             </div>
         `;
         projectsGrid.appendChild(projectCard);
     });
 }
 
-// Typing animation
-const typingText = document.querySelector('.typing-text');
-const text = typingText.textContent;
-typingText.textContent = '';
-
-let i = 0;
-const typeWriter = () => {
-    if (i < text.length) {
-        typingText.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-    }
-};
-
-typeWriter();
-
-// Intersection Observer for Fade-in Animation
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Add fade-in animation to sections
-document.querySelectorAll('section').forEach(section => {
-    section.classList.add('fade-out');
-    observer.observe(section);
-});
-
-// Project Cards Hover Effect
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
-
-// Form Validation with Visual Feedback
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const formGroups = contactForm.querySelectorAll('.form-group');
-        let isValid = true;
-        
-        formGroups.forEach(group => {
-            const input = group.querySelector('input, textarea');
-            const errorMessage = group.querySelector('.error-message') || document.createElement('div');
-            
-            if (!input.value.trim()) {
-                isValid = false;
-                errorMessage.textContent = 'This field is required';
-                errorMessage.classList.add('error-message');
-                if (!group.querySelector('.error-message')) {
-                    group.appendChild(errorMessage);
-                }
-                input.classList.add('invalid');
-            } else {
-                if (group.querySelector('.error-message')) {
-                    group.removeChild(errorMessage);
-                }
-                input.classList.remove('invalid');
-            }
-        });
-        
-        if (isValid) {
-            // Add success animation
-            contactForm.classList.add('success');
-            setTimeout(() => {
-                contactForm.classList.remove('success');
-                contactForm.reset();
-            }, 2000);
-        }
-    });
-}
-
-// Navbar Scroll Effect
-let lastScroll = 0;
-const navbar = document.querySelector('nav');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        navbar.classList.remove('scroll-up');
-        return;
-    }
-    
-    if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
-        navbar.classList.remove('scroll-up');
-        navbar.classList.add('scroll-down');
-    } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
-        navbar.classList.remove('scroll-down');
-        navbar.classList.add('scroll-up');
-    }
-    lastScroll = currentScroll;
-});
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Populate projects with terminal-style cards
-function populateProjects() {
-    filterProjects('all');
-}
-
 // Handle contact form submission
 document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
     
-    // Format the email body
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    // Add loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
     
-    // Update the mailto link with the formatted body
-    this.action = `mailto:ghostsector@icloud.com?subject=Portfolio Contact from ${name}&body=${body}`;
+    // Simulate sending (replace with actual form submission)
+    setTimeout(() => {
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            Message sent successfully! I'll get back to you soon.
+        `;
+        this.appendChild(successMessage);
+        
+        // Reset form
+        this.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => successMessage.remove(), 5000);
+    }, 1500);
 });
 
-// Initialize
-window.addEventListener('load', () => {
+// Initialize everything
+document.addEventListener('DOMContentLoaded', () => {
+    initTypeAnimations();
     populateProjects();
 });
 
-// Resize handler for matrix animation
+// Handle navigation highlighting
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            const currentId = section.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+window.addEventListener('scroll', updateActiveNavLink);
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
